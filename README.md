@@ -78,18 +78,18 @@ In order to run this project you need:
 - Installed Ruby
 - Create a local directory that you want to clone the repository.
 - Open the command prompt in the created directory.
-- On the terminal run this command git clone https://github.com/Fahim-Khan-P/school-library.git
+- On the terminal run this command git clone https://github.com/yash244466666/OOP_School_Library.git
 
 ### Setup
 
 Clone this repository to your desired folder:
 
 ```sh
-https://github.com/Fahim-Khan-P/school-library.git
+https://github.com/yash244466666/OOP_School_Library.git
 ```
 
 ```sh
-cd Ruby-school-library bundle install
+cd OOP_School_Library bundle install
 ```
 
 ```sh
@@ -108,10 +108,12 @@ Rubocop --color
 
 ## 👥 Authors <a name="authors"></a>
 
-### 👤 **Fahim Khan**:
+👤 **Author 1**
 
-- GitHub: [Fahim-Khan-P](https://github.com/Fahim-Khan-P/)
-- LinkedIn: [Fahim Khan](https://www.linkedin.com/in/fahimkhan-p/)
+- Yash
+- GitHub: [Yash](https://github.com/yash244466666)
+- LinkedIn: [Yash Solo](https://www.linkedin.com/in/yash-solo)
+- Twitter: [Yash Solo](https://twitter.com/yash_solo000)
 
 # 🔭 Future Features:
 
