@@ -1,12 +1,14 @@
-require './person'
+require_relative 'person'
 
 class Student < Person
-  def initialize(classroom, age, name = 'Unknown', parents_permission = 'true')
-    super(age, name, parents_permission)
+  attr_accessor :classroom
+
+  def initialize(age, classroom, name, parent_permission: true)
+    super(age, name, parent_permission)
     @classroom = classroom
   end
 
   def play_hooky
-    '¯\(ツ)/¯'
+    '¯\\(ツ)/¯'
   end
 end
