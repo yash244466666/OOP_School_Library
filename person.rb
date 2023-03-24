@@ -4,7 +4,7 @@ require_relative 'trimmer_decorator'
 
 class Person < Nameable
   attr_reader :id
-  attr_accessor :name, :age, :rentals
+  attr_accessor :name, :age, :parent_permission, :rentals
 
   def initialize(age, name, parent_permission: true)
     super()
@@ -33,8 +33,8 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(date, book)
-    Rental.new(date, self, book)
+  def add_rental(book, date)
+    Rental.new(date, book, self)
   end
 end
 
