@@ -1,47 +1,39 @@
-require './app'
+require_relative 'app'
 
 class Main
   def initialize
     @app = App.new
+    @hash = init_hash
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-  def menu
-    puts 'Welcome to School Library App!'
-    loop do
-      puts 'Please choose an option by entering a number:'
-      puts '1 - List all books'
-      puts '2 - List all people'
-      puts '3 - Create a person'
-      puts '4 - Create a book'
-      puts '5 - Create a rental'
-      puts '6 - List all rentals for a given person id'
-      puts '7 - Exit'
-      option = gets.chomp
-
-      case option
-      when '1'
-        @app.list_all_books
-      when '2'
-        @app.list_all_people
-      when '3'
-        @app.create_person
-      when '4'
-        @app.create_book
-      when '5'
-        @app.create_rental
-      when '6'
-        @app.list_rentals
-      when '7'
-        puts 'Thank you for using our library ¯\^-^/¯'
-        return
-      else
-        puts 'Please enter a number between 1 and 7'
-      end
-    end
+  def init_hash
+    {
+      1 => proc { @app.list_books },
+      2 => proc { @app.list_people },
+      3 => proc { @app.create_person },
+      4 => proc { @app.create_book },
+      5 => proc { @app.create_rental },
+      6 => proc { @app.list_rentals },
+      7 => proc {
+        puts 'Thank you for using this app!'
+        exit
+      }
+    }
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
-end
+
+  def display_menu
+    puts 'Welcome to school library App'
+    puts 'Please choose an option to enter in a number'
+    puts '1. List all books'
+    puts '2. List all people'
+    puts '3. Create a person'
+    puts '4. Create a book'
+    puts '5. Create a rental'
+    puts '6. List rentals for a given person id'
+    puts "7. Quit\n"
+  end
+
+
 
 main = Main.new
-main.menu
+main.run
