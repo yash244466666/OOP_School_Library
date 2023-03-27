@@ -33,7 +33,16 @@ class Main
     puts "7. Quit\n"
   end
 
+  def run
+    loop do
+      display_menu
+      option = gets.chomp.to_i
 
+      puts @hash[option].call
+      puts "\n"
+    end
+  end
+end
 
 main = Main.new
 main.run
