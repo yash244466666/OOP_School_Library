@@ -1,4 +1,4 @@
-require_relative 'decorator'
+require './decorator'
 
 class TrimmerDecorator < Decorator
   MAX_NAME_LENGTH = 10
