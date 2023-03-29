@@ -18,7 +18,7 @@ class Menu
     puts 'Welcome to School Library App!'
 
     loop do
-      option = get_menu_option
+      option = _menu_option
       method = @options[option]
       if method == :exit
         puts 'Thank you for using this app!'
@@ -31,7 +31,7 @@ class Menu
 
   private
 
-  def get_menu_option
+  def _menu_option
     puts 'Please choose an option by entering a number:'
     @options.each_with_index { |(option, _), index| puts "#{index + 1}. #{option}" }
 
@@ -41,7 +41,7 @@ class Menu
       @options.keys[option]
     else
       puts 'That option is in valid'
-      get_menu_option
+      _menu_option
     end
   end
 end
