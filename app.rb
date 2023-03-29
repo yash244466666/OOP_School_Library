@@ -120,8 +120,8 @@ class App
     print 'ID of person: '
     id = gets.chomp.to_i
 
-    rentals = @rentals.filter { |rentals| rentals.person.id == id }
+    rentals = @rentals.filter { |rental| rental.person.id == id }
     puts 'Rentals:'
-    rentals.each { |rentals| puts "Date: #{rentals.date}, Book: #{rentals.book.title} by #{rentals.book.author}" }
+    rentals.each { |rental| puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" }
   end
 end
