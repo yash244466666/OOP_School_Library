@@ -1,45 +1,49 @@
 require './app'
 
-class Main
-  MENU_OPTIONS = {
-    1 => { message: 'List all books', method: :list_books },
-    2 => { message: 'List all people', method: :list_people },
-    3 => { message: 'Create a person', method: :create_person },
-    4 => { message: 'Create a book', method: :create_book },
-    5 => { message: 'Create a rental', method: :create_rental },
-    6 => { message: 'List rentals for a given person id', method: :list_rentals },
-    7 => { message: 'Quit', method: :quit }
-  }.freeze
-
-  def initialize
-    @app = App.new
+class Menu
+  def initialize(app)
+    @app = app
+    @options = {
+      'List all books' => :list_books,
+      'List all people' => :list_people,
+      'Create a person' => :create_person,
+      'Create a book' => :create_book,
+      'Create a rental' => :create_rental,
+      'List all rentals for a given person id' => :list_rentals_by_person_id,
+      'Exit' => :exit
+    }
   end
 
-  def display_menu
-    puts "Welcome to the School Library App\n\n"
-    MENU_OPTIONS.each { |key, value| puts "#{key}. #{value[:message]}" }
-    puts "\nPlease choose an option by entering a number:\n"
-  end
+  def display
+    puts 'Welcome to School Library App!'
 
-  def run
     loop do
-      display_menu
-      option = gets.chomp.to_i
-      selected_option = MENU_OPTIONS[option]
-
-      if selected_option
-        puts @app.send(selected_option[:method])
+      option = get_menu_option
+      method = @options[option]
+      if method == :exit
+        puts 'Thank you for using this app!'
+        break
       else
-        puts "Invalid option. Please try again.\n\n"
+        @app.send(method)
       end
     end
   end
 
   private
 
-  def quit
-    "Thank you for using the School Library App!\n\n"
+  def get_menu_option
+    puts 'Please choose an option by entering a number:'
+    @options.each_with_index { |(option, _), index| puts "#{index + 1}. #{option}" }
+
+    option = gets.chomp.to_i
+    option -= 1
+    if option >= 0 && option < @options.size
+      @options.keys[option]
+    else
+      puts 'That option is in valid'
+      get_menu_option
+    end
   end
 end
 
-Main.new.run
+Menu.new(App.new).display
