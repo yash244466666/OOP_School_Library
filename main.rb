@@ -1,47 +1,49 @@
 require './app'
 
-class Main
-  def initialize
-    @app = App.new
+class Menu
+  def initialize(app)
+    @app = app
+    @options = {
+      'List all books' => :list_books,
+      'List all people' => :list_people,
+      'Create a person' => :create_person,
+      'Create a book' => :create_book,
+      'Create a rental' => :create_rental,
+      'List all rentals for a given person id' => :list_rentals_by_person_id,
+      'Exit' => :exit
+    }
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-  def menu
+  def display
     puts 'Welcome to School Library App!'
-    loop do
-      puts 'Please choose an option by entering a number:'
-      puts '1 - List all books'
-      puts '2 - List all people'
-      puts '3 - Create a person'
-      puts '4 - Create a book'
-      puts '5 - Create a rental'
-      puts '6 - List all rentals for a given person id'
-      puts '7 - Exit'
-      option = gets.chomp
 
-      case option
-      when '1'
-        @app.list_all_books
-      when '2'
-        @app.list_all_people
-      when '3'
-        @app.create_person
-      when '4'
-        @app.create_book
-      when '5'
-        @app.create_rental
-      when '6'
-        @app.list_rentals
-      when '7'
-        puts 'Thank you for using our library ¯\^-^/¯'
-        return
+    loop do
+      option = _menu_option
+      method = @options[option]
+      if method == :exit
+        puts 'Thank you for using this app!'
+        break
       else
-        puts 'Please enter a number between 1 and 7'
+        @app.send(method)
       end
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
+
+  private
+
+  def _menu_option
+    puts 'Please choose an option by entering a number:'
+    @options.each_with_index { |(option, _), index| puts "#{index + 1}. #{option}" }
+
+    option = gets.chomp.to_i
+    option -= 1
+    if option >= 0 && option < @options.size
+      @options.keys[option]
+    else
+      puts 'That option is in valid'
+      _menu_option
+    end
+  end
 end
 
-main = Main.new
-main.menu
+Menu.new(App.new).display

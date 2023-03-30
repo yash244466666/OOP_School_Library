@@ -13,18 +13,18 @@ class App
   end
 
   def list_books
-    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+    each_book { |book| puts "Title: #{book.title}, Author: #{book.author}" }
   end
 
   def list_people
     if @people.empty?
       puts 'There are no people in the library'
     else
-      @people.each do |person|
+      each_person do |person|
         if person.instance_of?(Student)
-          puts "[Student]: Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
+          puts "[Student]: #{person_summary(person)}"
         else
-          puts "[Teacher]: Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
+          puts "[Teacher]: #{person_summary(person)}"
         end
       end
     end
@@ -37,54 +37,29 @@ class App
     case person_type
     when '1'
       student = create_student
-      @people << student
-      puts 'Person created successfully'
-
+      add_person(student)
     when '2'
       teacher = create_teacher
-      @people << teacher
-      puts 'Person created successfully'
+      add_person(teacher)
     else
       puts 'Invalid option'
     end
   end
 
   def create_student
-    print 'Name: '
-    name = gets.chomp
-
-    print 'Age: '
-    age = gets.chomp.to_i
-
-    print 'Classroom:'
-    classroom = Classroom.new(gets.chomp)
-
-    print 'Has parent permission? [y/n]: '
-    parent_permission = gets.chomp
-    if parent_permission == 'y'
-      parent_permission = true
-    elsif parent_permission == 'n'
-      parent_permission = false
-    else
-      return nil
-    end
-
+    name = get_input('Name')
+    age = get_input('Age', :to_i)
+    classroom = Classroom.new(get_input('Classroom'))
+    parent_permission = get_input('Has parent permission? [y/n]').downcase == 'y'
     Student.new(age, classroom, parent_permission, name)
   end
 
   def create_teacher
-    print 'Name: '
-    name = gets.chomp
-
-    print 'Age: '
-    age = gets.chomp.to_i
-
-    print 'Specialization: '
-    specialization = gets.chomp
-
+    name = get_input('Name')
+    age = get_input('Age', :to_i)
+    specialization = get_input('Specialization')
     Teacher.new(age, specialization, name)
   end
-
   def create_book
     print 'Title: '
     title = gets.chomp
@@ -120,8 +95,8 @@ class App
     print 'ID of person: '
     id = gets.chomp.to_i
 
-    rentals = @rentals.filter { |rental| rental.person.id == id }
+    rentals = @rentals.filter { |rentals| rentals.person.id == id }
     puts 'Rentals:'
-    rentals.each { |rental| puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" }
+    rentals.each { |rentals| puts "Date: #{rentals.date}, Book: #{rentals.book.title} by #{rentals.book.author}" }
   end
 end
