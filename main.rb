@@ -12,6 +12,7 @@ class Menu
       'List all rentals for a given person id' => :list_rentals_by_person_id,
       'Exit' => :exit
     }
+    @app.load_data
   end
 
   def display
@@ -21,6 +22,7 @@ class Menu
       option = _menu_option
       method = @options[option]
       if method == :exit
+        @app.save_data
         puts 'Thank you for using this app!'
         break
       else

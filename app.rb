@@ -1,3 +1,4 @@
+require 'json'
 require './person'
 require './student'
 require './teacher'
@@ -124,4 +125,7 @@ class App
     puts 'Rentals:'
     rentals.each { |rental| puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" }
   end
+  #  add save data code here
+
+  #  add save data code here
 end
