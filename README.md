@@ -115,6 +115,12 @@ Rubocop --color
 - LinkedIn: [Yash Solo](https://www.linkedin.com/in/yash-solo)
 - Twitter: [Yash Solo](https://twitter.com/yash_solo000)
 
+👤 **Author 2**
+
+- Saba Ahmad
+- GitHub: @SabaAhmad404
+- LinkedIn: @saba ahmad
+
 # 🔭 Future Features:
 
 - Add more advanced Ruby functions.
