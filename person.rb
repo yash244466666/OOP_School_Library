@@ -18,8 +18,8 @@ class Person < Nameable
     @name
   end
 
-  def can_use_services?(_is_of_age)
-    return unless is_of_age? || @parent_permission
+  def can_use_services?(_of_age)
+    return unless of_age? || @parent_permission
 
     true
   end
