@@ -1,9 +1,8 @@
 require './rental'
 require './book'
 require './person'
-require 'rspec'
 
-describe Rental do
+RSpec.describe Rental do
   let(:book) { Book.new('Harry Potter', 'J.K. Rowling') }
   let(:person) { Person.new('John Doe') }
   let(:rental) { Rental.new('2022-01-01', book, person) }

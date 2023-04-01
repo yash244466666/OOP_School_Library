@@ -1,8 +1,7 @@
-require 'rspec'
 require './book'
 require 'date'
 
-describe Book do
+RSpec.describe Book do
   let(:book) { Book.new('Title', 'Author') }
   let(:person) { double('Person') }
 
