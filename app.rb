@@ -126,7 +126,6 @@ class App
     rentals.each { |rental| puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" }
   end
 
-  #  add save data code here
   def save_data
     File.write('books.json', JSON.generate(@books))
     File.write('people.json', JSON.generate(@people))
@@ -146,5 +145,4 @@ class App
       []
     end
   end
-  #  add save data code here
 end
