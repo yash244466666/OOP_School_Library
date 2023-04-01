@@ -62,9 +62,9 @@
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
+<!-- ## 🚀 Live Demo <a name="live-demo"></a>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- GETTING STARTED -->
 
@@ -114,6 +114,12 @@ Rubocop --color
 - GitHub: [Yash](https://github.com/yash244466666)
 - LinkedIn: [Yash Solo](https://www.linkedin.com/in/yash-solo)
 - Twitter: [Yash Solo](https://twitter.com/yash_solo000)
+
+👤 **Author 2**
+
+- Saba Ahmad
+- GitHub: @SabaAhmad404
+- LinkedIn: @saba ahmad
 
 # 🔭 Future Features:
 
